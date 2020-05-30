@@ -1,0 +1,227 @@
+/* -- RESET ------------------------------------------------------------------*/
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* -- BASE -------------------------------------------------------------------*/
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1.5;
+  height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: 0;
+}
+
+a:active {
+    /*color-purple*/
+    color: #B10DC9;
+}
+
+/* Remove Firefox dotted outline on buttons as well as links */
+button::-moz-focus-inner {
+    border: 0;
+}
+
+@font-face {
+  font-family: 'scala-regular';
+  src: url("../fonts/scala/Scala.otf");
+}
+
+@font-face {
+  font-family: 'scala-sans-regular';
+  src: url("../fonts/scala/ScalaSans.otf");
+}
+
+@font-face {
+  font-family: 'scala-sans-caps';
+  src: url("../fonts/scala/ScalaSansCaps.otf");
+}
+
+@font-face {
+  font-family: 'scala-sans-caps-bold';
+  src: url("../fonts/scala/ScalaSansCaps-Bold.otf");
+}
+
+@font-face {
+  font-family: 'scala-italic';
+  src: url("../fonts/scala/Scala-Italic.otf");
+}
+
+.color-navy {
+    color: #001f3f;
+}
+
+.color-aqua {
+    color: #7FDBFF;
+}
+
+.color-olive {
+    color: #3D9970;
+}
+
+.color-lime {
+    color: #01FF70;
+}
+
+.color-orange {
+    color: #FF851B;
+}
+
+.color-maroon {
+    color: #85144b;
+}
+
+.color-purple {
+    color: #B10DC9;
+}
+
+.color-grey {
+    color: #AAAAAA;
+}
+
+.color-blue {
+    color: #0074D9;
+}
+
+.color-teal {
+    color: #39CCCC;
+}
+
+.color-green {
+    color: #2ECC40;
+}
+
+.color-yellow {
+    color: #FFDC00;
+}
+
+.color-red {
+    color: #FF4136;
+}
+
+.color-fuchsia {
+    color: #F012BE;
+}
+
+.color-black {
+    color: #111111;
+}
+
+.color-silver {
+    color: #DDDDDD;
+}
+
+.success {
+    color: #2ECC40;
+}
+
+/* -- BASE PAGE --------------------------------------------------------------*/
+
+#site-header {
+    display: flex;
+    justify-content: space-between;
+    height: 10%;
+}
+
+#site-header .container {
+    position: relative;
+    display: flex;
+    flex: 1
+}
+
+#site-logo {
+    display: flex;
+    align-items:center;
+    padding: 0 15px;
+    font-size: 1.3em;
+    letter-spacing: 2px;
+    font-family: 'scala-sans-caps-bold';
+}
+
+#site-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+}
+
+.http-code {
+    font-size: 2em;
+    font-family: 'scala-italic';
+}

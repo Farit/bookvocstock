@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>{% block title %}bookvocstock{% end %}</title>
+        <link rel="stylesheet" href="{{static_url('css/universe.css')}}">
+    </head>
+
+    <body>
+        <header id="site-header">
+            <a id="site-logo" href="/">bookvocstock</a>
+            <div class="container">
+            </div>
+        </header>
+
+        <main id="site-main">
+            {% block main %}
+            {% end %}
+        </main>
+
+        {% block scripts %}{% end %}
+    </body>
+
+</html>

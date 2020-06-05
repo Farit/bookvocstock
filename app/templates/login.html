@@ -1,0 +1,36 @@
+{% extends base.html %}
+
+{% block title %}login{% end %}
+
+{% block main %}
+    <form id="login-form" class="reg-auth-form" action="/login" method="POST">
+        <div class="form-title">account login</div>
+        <div class="submission-error-label color-red"></div>
+
+        <label class="error-label color-red" for="email"></label>
+        <input id="email" name="email" placeholder="email">
+
+        <label class="error-label color-red" for="password"></label>
+        <input id="password" name="password" type="password" placeholder="password">
+        <div id="password-help">
+            <input type="checkbox" name="show_password" id="show-password">
+            <label for="show-password">show password</label>
+        </div>
+
+        <div>
+            <a id="forgot-password-link" href="/password/recovery">
+                Forgot my password
+            </a>
+
+            <button id='submit-form-button' class='submit-spinner' type="submit">
+                login
+            </button>
+        </div>
+    </form>
+{% end %}
+
+{% block scripts %}
+    <script>
+        new app.views.Login({model: new app.models.Login()});
+    </script>
+{% end %}

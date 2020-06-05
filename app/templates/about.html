@@ -1,0 +1,36 @@
+{% extends base.html %}
+
+{% block title %}about{% end %}
+
+{% block main %}
+    <div id="about">
+        <img src="{{static_url('images/myself_grey.jpg')}}">
+        <p>I like reading books in English, but I do, however, have a problem,
+            English is not my native tongue. If you have learnt any language, you
+            would know what an amount of words someone needs to memorize.
+            At the beginning, though, you make a progress quite fast, and
+            there is a reason to it. According to the research, 2000 basic words in
+            English helps you to understand 80% of the language. These words are
+            used in all types of writing and in daily usage.</p>
+        <p>When I started to teach myself to read in English, I looked up every
+            an unknown word in a dictionary and wrote it to my notebook for the
+            future review. I mainly read a simplified texts.</p>
+        <div id="contact">
+            You may <span>contact</span> me via
+            <a href="https://ru.linkedin.com/in/farit-sadykov-468a3436" target="_blank">
+                linkedin
+            </a>
+            or by writing a message in the form below
+            <div class='message-received'>
+                Thank you! Your message has been sent.
+            </div>
+            <form class="message">
+                <textarea placeholder="leave me a message and please do not forget to include your contact if you would like me to write you back!">
+                </textarea>
+                <button id='submit-form-button' class='submit-spinner' type="submit">
+                    submit
+                </button>
+            </form>
+        </div>
+    </div>
+{% end %}

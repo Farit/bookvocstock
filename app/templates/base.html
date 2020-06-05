@@ -6,22 +6,84 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>{% block title %}bookvocstock{% end %}</title>
+        <title>{% block title %}myvocstock{% end %}</title>
         <link rel="stylesheet" href="{{static_url('css/universe.css')}}">
     </head>
 
     <body>
         <header id="site-header">
-            <a id="site-logo" href="/">bookvocstock</a>
-            <div class="container">
-            </div>
+            {% if current_user %}
+                <a id="site-logo" href="/library">myvocstock</a>
+                <div class="container">
+                    <ul id="page-dashboard">
+                    </ul>
+                    <ul id="site-navigation" class="hide">
+                        <li class="item color-grey">
+                            <a href="/library">library</a>
+                        </li>
+                        <li class="item border"></li>
+                        <li class="item color-grey">
+                            <a href="/vocabulary">vocabulary</a>
+                        </li>
+                        <li class="item border"></li>
+                        <li class="item color-grey">
+                            <a href="/logout">logout</a>
+                        </li>
+                    </ul>
+                </div>
+            {% else %}
+                <a id="site-logo" href="/">myvocstock</a>
+                <div class="container">
+                    <ul id="site-navigation">
+                        <li class="item color-grey">
+                            <a href="/login">login</a>
+                        </li>
+                        <li class="item border"></li>
+                        <li class="item color-grey">
+                            <a href="/signup">register</a>
+                        </li>
+                        <li class="item border"></li>
+                        <li class="item color-grey">
+                            <a href="/about">about<span class="color-maroon">&amp;</span>contact</a>
+                        </li>
+                    </ul>
+                </div>
+            {% end %}
         </header>
 
         <main id="site-main">
             {% block main %}
+                <div id="project-description">
+                    <div class="left"></div>
+                    <div class="right">
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Nunc sit amet ante purus. Suspendisse cursus faucibus ex,
+                            a interdum mi suscipit non. Donec accumsan molestie dui a
+                            sodales. Duis commodo vehicula mauris, pharetra dictum purus
+                            mattis vitae.
+                        </p>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Nunc sit amet ante purus. Suspendisse cursus faucibus ex,
+                            a interdum mi suscipit non. Donec accumsan molestie dui a
+                            sodales. Duis commodo vehicula mauris, pharetra dictum purus
+                            mattis vitae.
+                        </p>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Nunc sit amet ante purus. Suspendisse cursus faucibus ex,
+                            a interdum mi suscipit non. Donec accumsan molestie dui a
+                            sodales. Duis commodo vehicula mauris, pharetra dictum purus
+                            mattis vitae.
+                        </p>
+                    </div>
+                </div>
             {% end %}
         </main>
 
+        <script src="{{static_url('js/lib/d3.v3.min.js')}}"></script>
+        <script src="{{static_url('js/lib/jquery-2_2_2.min.js')}}"></script>
+        <script src="{{static_url('js/lib/underscore-1_8_3-min.js')}}"></script>
+        <script src="{{static_url('js/lib/backbone-1_3_3-min.js')}}"></script>
+        <script src="{{static_url('js/universe.js')}}"></script>
         {% block scripts %}{% end %}
     </body>
 

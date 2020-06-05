@@ -1,0 +1,81 @@
+{% extends base.html %}
+
+{% block title %}library{% end %}
+
+{% block main %}
+    <div id="book-library" class="library-catalogue">
+
+        <div class="library-list-head">
+            <div class="library-list-row head">
+                <div class="library-list-col cell-one cell-text">title</div>
+                <div class="library-list-col cell-one cell-text">author</div>
+                <div class="library-list-col cell-half cell-num">unique</div>
+                <div class="library-list-col cell-half cell-num">unknown</div>
+            </div>
+        </div>
+
+        <div class="library-list-body">
+            <template id="book-library-item">
+                <div class="library-list-row body">
+                    <div class="library-list-col cell-one cell-text title"></div>
+                    <div class="library-list-col cell-one cell-text author"></div>
+                    <div class="library-list-col cell-half cell-num unique"></div>
+                    <div class="library-list-col cell-half cell-num cell-multi unknown"></div>
+                    <div class="percent-mining">
+                        <span></span>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <div class="library-catalogue-pagination">
+            <div class="element previous">previous</div>
+            <div class="element pages"></div>
+            <div class="element next">next</div>
+        </div>
+
+    </div>
+
+    <div id="movie-library" class="library-catalogue">
+
+        <div class="library-list-head">
+            <div class="library-list-row head">
+                <div class="library-list-col cell-one cell-text">movie</div>
+                <div class="library-list-col cell-half cell-num">year</div>
+                <div class="library-list-col cell-half cell-num">unique</div>
+                <div class="library-list-col cell-half cell-num">unknown</div>
+            </div>
+        </div>
+
+        <div class="library-list-body">
+            <template id="movie-library-item">
+                <div class="library-list-row body">
+                    <div class="library-list-col cell-one cell-text title"></div>
+                    <div class="library-list-col cell-half cell-num year"></div>
+                    <div class="library-list-col cell-half cell-num unique"></div>
+                    <div class="library-list-col cell-half cell-num cell-multi unknown"></div>
+                    <div class="percent-mining">
+                        <span></span>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <div class="library-catalogue-pagination">
+            <div class="element previous">previous</div>
+            <div class="element pages"></div>
+            <div class="element next">next</div>
+        </div>
+
+    </div>
+
+    {% include components/upload_page.html %}
+
+{% end %}
+
+{% block scripts %}
+    <script>
+        var library = new app.views.Library({data: {% raw data %}});
+        library.render();
+    </script>
+{% end %}

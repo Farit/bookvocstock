@@ -1,0 +1,27 @@
+{% extends base.html %}
+
+{% block title %}signup{% end %}
+
+{% block main %}
+    <form id="signup-form" class="reg-auth-form" action="/signup" method="POST">
+        <div class="form-title">account registration</div>
+        <div class="submission-error-label color-red"></div>
+
+        <label class="error-label color-red" for="email"></label>
+        <input id="email" name="email" type="email" placeholder="email">
+
+        <label class="error-label color-red" for="password"></label>
+        <input id="password" name="password" type="password" placeholder="password">
+        {% include components/password_help.html %}
+
+        <button id='submit-form-button' class='submit-spinner' type="submit">
+            sign up
+        </button>
+  </form>
+{% end %}
+
+{% block scripts %}
+    <script>
+        new app.views.Signup({model: new app.models.Signup()});
+    </script>
+{% end %}

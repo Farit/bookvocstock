@@ -1,0 +1,29 @@
+{% extends base.html %}
+
+{% block title %}password recovery{% end %}
+
+{% block main %}
+    <form id="forgot-password-form" class="reg-auth-form"
+          action="'/password/recovery'" method="POST">
+
+        <div class="form-title">account password recovery</div>
+        <div class="instructions">
+            To reset your password, enter your email address below.
+            An email will be sent to you with a link to reset your password.
+        </div>
+        <div class="submission-error-label color-red"></div>
+
+        <label class="error-label color-red" for="email"></label>
+        <input id="email" name="email" type="email" placeholder="email">
+
+        <button id='submit-form-button' class='submit-spinner' type="submit">
+            submit
+        </button>
+    </form>
+{% end %}
+
+{% block scripts %}
+    <script>
+        new app.views.PasswordRecovery({model: new app.models.PasswordRecovery()});
+    </script>
+{% end %}

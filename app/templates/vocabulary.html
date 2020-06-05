@@ -1,0 +1,29 @@
+{% extends base.html %}
+
+{% block title %}vocabulary{% end %}
+
+{% block main %}
+<div id="vocabulary-container">
+    <div id="visualization-vocabulary">
+        <div id='vocabulary-info'>
+            <div class="item">
+                <span class="tag known">known:</span>
+                <span class="value known"></span>
+                <span class="tag learning">learning:</span>
+                <span class="value learning"></span>
+                <span class="tag familiar">familiar:</span>
+                <span class="value familiar"></span>
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}
+
+{% block scripts %}
+<script>
+        var voc = new app.views.Vocabulary(
+            {model: new app.models.Vocabulary({% raw data %})}
+        );
+        voc.render();
+</script>
+{% end %}

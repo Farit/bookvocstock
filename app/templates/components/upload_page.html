@@ -1,0 +1,53 @@
+<div id="text-upload-wrapper">
+    <div class="container">
+
+        <div class="header"> </div>
+
+        <div class="main">
+            <div id="text-upload-error" class="color-red"></div>
+
+            <form id="text-upload-browser">
+                <div class="tag">choose file</div>
+                <input type="file" name="file-browser">
+            </form>
+
+            <div id="text-upload-timer">
+                <div>please wait</div>
+            </div>
+
+            <form id="text-upload-card">
+                <div class="item description">
+                    <label>Title</label>
+                    <input name="title" type="text"/>
+                </div>
+
+                <div class="item description text-attr book">
+                    <label>Author(s)</label>
+                    <input name="author" type="text"/>
+                </div>
+
+                <div class="item description text-attr movie">
+                    <label>Year</label>
+                    <input name="year" type="text"/>
+                </div>
+
+                <div class='item text-type'>
+                    <div>
+                        <input id="book-type" type="radio" name="text_type" value="book">
+                        <label for="book-type">book</label>
+                    </div>
+                    <div>
+                        <input id="movie-type" type="radio" name="text_type" value="movie">
+                        <label for="movie-type">movie</label>
+                    </div>
+                </div>
+
+                <div class="item action">
+                    <input type="button" value="cancel"/>
+                    <input type="submit" value="submit"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,112 @@
+{% extends base.html %}
+
+{% block title %}
+    {{data['title']}}
+{% end %}
+
+{% block main %}
+<div id="text-container">
+
+    <div class="text-card">
+        <div class="text-type">{{data['text_type']}}</div>
+        <input type="text" name="title" value="{{data['title']}}" readonly>
+    </div>
+
+    <div>
+        <div class="total-words">Total number of words: <span class="value"></span></div>
+        <div class="total-common-words">Total number of &#9734; words: <span class="value"></span></div>
+    </div>
+
+    <div id="visualization-by-stage"></div>
+    <div id="visualization-by-occur">
+        <div class='tooltip'>
+            <div class='desc'></div>
+            {% for i in ['unknown', 'known', 'learning', 'familiar'] %}
+                <div class='stage {{i}}' data-stage="{{i}}">
+                    <span>{{i}}:</span>
+                    <span class='number {{i}}'></span>
+                </div>
+            {% end %}
+        </div>
+    </div>
+</div>
+
+<div id='words-list-view'>
+    <div class='container'>
+        <div class="header">
+            <h1>words list: <span class="stage"></span></h1>
+            <svg class="close" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 40 40"
+             style="enable-background:new 0 0 40 40;" xml:space="preserve">
+            <g>
+                <path class="st0" d="M34.1 9.3L7.9 32.7c-0.6 0.5-1.4 0.5-2-0.1l0 0c-0.5-0.6-0.5-1.4 0.1-2L32.2 7.3c0.6-0.5 1.4-0.5 2 0.1l0 0 C34.7 7.9 34.6 8.8 34.1 9.3z"/>
+                <path class="st0" d="M32.4 32.8L5.8 9.2c-0.6-0.5-0.6-1.4-0.1-2l0 0c0.5-0.6 1.4-0.6 2-0.1l26.6 23.6c0.6 0.5 0.6 1.4 0.1 2h0 C33.8 33.3 33 33.3 32.4 32.8z"/>
+            </g>
+        </svg>
+        </div>
+
+        <div class="main">
+            <template id="item">
+                <div class="list-item">
+                    <div class="cell word"></div>
+                    <div class="cell common-word"></div>
+                    <div class="cell freq"></div>
+                </div>
+            </template>
+        </div>
+
+        <div class="footer">
+            <div class="total">
+                <span>total:</span>
+                <span class="value"></span>
+            </div>
+            <div class="displayed">
+                <span>displayed:</span>
+                <span class="value"></span>
+            </div>
+            <div class="load-more">load more</div>
+        </div>
+    </div>
+</div>
+
+<div id='word-view'>
+    <div class='container'>
+        <div class="header">
+            <h1>
+                <span class="word"></span>
+                <span class="freq"></span>
+            </h1>
+            <svg class="close" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 40 40"
+             style="enable-background:new 0 0 40 40;" xml:space="preserve">
+            <g>
+                <path class="st0" d="M34.1 9.3L7.9 32.7c-0.6 0.5-1.4 0.5-2-0.1l0 0c-0.5-0.6-0.5-1.4 0.1-2L32.2 7.3c0.6-0.5 1.4-0.5 2 0.1l0 0 C34.7 7.9 34.6 8.8 34.1 9.3z"/>
+                <path class="st0" d="M32.4 32.8L5.8 9.2c-0.6-0.5-0.6-1.4-0.1-2l0 0c0.5-0.6 1.4-0.6 2-0.1l26.6 23.6c0.6 0.5 0.6 1.4 0.1 2h0 C33.8 33.3 33 33.3 32.4 32.8z"/>
+            </g>
+        </svg>
+        </div>
+
+        <div class="main">
+            <div class="stage">
+                <button class="button unknown" name="unknown">unknown</button>
+                <button class="button known" name="known">known</button>
+                <button class="button learning" name="learning">learning</button>
+                <button class="button familiar" name="familiar">familiar</button>
+            </div>
+            <ol class="context">
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+{% end %}
+
+{% block scripts %}
+    <script>
+        var textView = new app.views.Text(
+            {model: new app.models.TextData({% raw data %}, {parse: true})}
+        );
+        textView.render();
+    </script>
+{% end %}

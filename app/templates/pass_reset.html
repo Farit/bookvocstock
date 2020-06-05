@@ -1,0 +1,29 @@
+{% extends base.html %}
+
+{% block title %}password reset{% end %}
+
+{% block main %}
+<form id="reset-password-form" class="reg-auth-form"
+      action="'/password/reset'" method="POST">
+
+    <div class="form-title">account password reset</div>
+    <div class="instructions">
+        Please enter a new password.
+    </div>
+    <div class="submission-error-label color-red"></div>
+
+    <label class="error-label color-red" for="password"></label>
+    <input id="password" name="password" type="password" placeholder="new password">
+    {% include components/password_help.html %}
+
+    <button id='submit-form-button' class='submit-spinner' type="submit">
+        submit
+    </button>
+</form>
+{% end %}
+
+{% block scripts %}
+    <script>
+        new app.views.PasswordReset({model: new app.models.PasswordReset()});
+    </script>
+{% end %}

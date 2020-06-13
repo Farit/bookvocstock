@@ -12,6 +12,9 @@ from lib.base import Base
 
 logger = logging.getLogger(__name__)
 
+APACHE_TIKA_HOST = os.getenv('APACHE_TIKA_HOST', 'localhost')
+APACHE_TIKA_PORT = os.getenv('APACHE_TIKA_PORT', 9998)
+
 
 class ExtractionService(Base):
     async def extract(self, uuid, tuid, file):
@@ -69,11 +72,11 @@ class ExtractionService(Base):
 
     def _detect_file_type(self, raw_file_path):
         try:
-            command = 'curl -H "Accept:application/json" -T {}'
-            command += ' http://localhost:9998/meta'
+            command = f'curl -H "Accept:application/json" -T {raw_file_path}'
+            command += f' http://{APACHE_TIKA_HOST}:{APACHE_TIKA_PORT}/meta'
 
             p = subprocess.Popen(
-                command.format(raw_file_path),
+                command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 shell=True)
@@ -89,9 +92,13 @@ class ExtractionService(Base):
 
     @staticmethod
     def _get_data(raw_file_path, extracted_file_path):
-        command = 'curl -T {} http://localhost:9998/unpack/all > {}'
+        command = (
+            f'curl -T {raw_file_path} '
+            f'http://{APACHE_TIKA_HOST}:{APACHE_TIKA_PORT}/unpack/all > '
+            f'{extracted_file_path}'
+        )
         p = subprocess.Popen(
-            command.format(raw_file_path, extracted_file_path),
+            command,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             shell=True)

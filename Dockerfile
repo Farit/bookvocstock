@@ -1,13 +1,9 @@
-FROM myvocstock_core
-
-COPY . /home/myvocstock/web_interface
-WORKDIR /home/myvocstock/web_interface
-
-
-RUN python3.5 -m pip install -vr requirements/prod.txt
-
-RUN chown -R myvocstock:myvocstock /home/myvocstock
-USER myvocstock
-
-
-CMD sh /home/myvocstock/core/wait_for_rabbitmq.sh && python3.5 app/run.py --config=etc/prod.conf
+FROM python:3.8
+RUN pip install pipenv
+COPY . /bookvocstock
+WORKDIR /bookvocstock
+RUN pipenv install
+RUN pipenv run python -m nltk.downloader punkt averaged_perceptron_tagger wordnet
+ENV SHELL=/bin/bash
+ENTRYPOINT ["pipenv", "run"]
+CMD ["python", "app/run.py", "--port", "8003", "--debug-server-mode"]

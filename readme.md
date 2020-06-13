@@ -1,5 +1,5 @@
-### How to run the program in development mode
+### Build and run your app with Compose 
 ```shell script
-pipenv run python app/run.py --port 8003 --debug-server-mode
+docker-compose up
 ```
 

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mongo:
+    container_name: bookvocstock_mongo
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+
+  apache_tika:
+    container_name: bookvocstock_apache_tika
+    image: logicalspark/docker-tikaserver
+    ports:
+      - '9998:9998'
+
+  bookvocstock:
+    container_name: bookvocstock
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - '8003:8003'
+    volumes:
+      - .:/bookvocstock
+    environment:
+      MONGO_DB_HOST: mongo
+      MONGO_DB_PORT: 27017
+      APACHE_TIKA_HOST: apache_tika
+      APACHE_TIKA_PORT: 9998
+    depends_on:
+      - mongo
+      - apache_tika

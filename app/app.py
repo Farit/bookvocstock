@@ -26,9 +26,12 @@ from lib.words import WordsService
 
 logger = logging.getLogger(__name__)
 
+MONGO_DB_HOST = os.getenv('MONGO_DB_HOST', '127.0.0.1')
+MONGO_DB_PORT = os.getenv('MONGO_DB_PORT', 27017)
+
 
 class Application:
-    MONGODB_URL = 'mongodb://127.0.0.1:27017'
+    MONGODB_URL = f'mongodb://{MONGO_DB_HOST}:{MONGO_DB_PORT}'
 
     def __init__(self, port, debug_server_mode):
         self.io_loop = tornado.ioloop.IOLoop.instance()

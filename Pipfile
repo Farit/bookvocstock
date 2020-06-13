@@ -6,12 +6,12 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-tornado = "*"
-bcrypt = "*"
-pymongo = "*"
-motor = "*"
-tzlocal = "*"
-nltk = "*"
+tornado = "==6.0.4"
+bcrypt = "==3.1.7"
+pymongo = "==3.10.1"
+motor = "==2.1.0"
+tzlocal = "==2.1"
+nltk = "==3.5"
 
 [requires]
 python_version = "3.8"
